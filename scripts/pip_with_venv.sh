@@ -20,3 +20,6 @@ pip install requests
 
 # tsdb database
 pip install influxdb
+
+# redis cache
+pip install redis
