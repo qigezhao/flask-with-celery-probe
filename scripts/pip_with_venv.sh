@@ -10,10 +10,10 @@ pip install --upgrade pip
 pip install flask
 
 # async tasks
-pip install celery[redis, msgpack]
+pip install celery[redis,msgpack]
 
 # rdb database orm
-pip install sqlalchemy[mysql]
+pip install sqlalchemy[pymysql]
 
 # http client
 pip install requests
