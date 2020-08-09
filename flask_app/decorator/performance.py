@@ -7,7 +7,7 @@ import logging
 import time
 import functools
 
-from celery_app.task_probe import celery_task_performance_probe_save
+from celery_app.task_probe import task_performance_probe_save
 
 
 class TimeitProbe(object):
@@ -32,19 +32,21 @@ class TimeitProbe(object):
 
 
 class PerformanceProbe(object):
-    def async_save_probe(self, probe):
+    @staticmethod
+    def async_save_probe(probe):
         payload = probe.payload
         logging.debug('PerformanceProbe.async_save_probe(payload={})'.format(payload))
-        celery_task_performance_probe_save.delay(payload)
+        task_performance_probe_save.delay(payload)
 
-    def timeit(self, func):
+    @staticmethod
+    def timeit(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             probe = TimeitProbe(func.__name__)
             data = func(*args, **kwargs)
 
             probe.done()
-            self.async_save_probe(probe)
+            PerformanceProbe.async_save_probe(probe)
 
             return data
 
