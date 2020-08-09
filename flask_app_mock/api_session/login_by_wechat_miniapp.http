@@ -1,0 +1,12 @@
+# by qigezhao@gmail.com since 2020-08-09
+
+POST /api/session/login/wechat/miniapp
+Host: {{host}}
+Content-Type: application/json
+Accept: */*
+
+{
+    "wx_code": {{wx_code}}
+}
+
+###
