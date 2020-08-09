@@ -11,7 +11,7 @@ from flask_app.decorator.api_response.wechat_miniapp import WechatMiniAppReponse
 from flask_app.decorator.performance import PerformanceProbe as Probe
 
 
-@app.route('/api/session/login/wechat/miniapp')
+@app.route('/api/session/login/wechat/miniapp', methods=['POST'])
 @Probe.timeit
 @Response.serialize
 def api_session_wechat_login_by_miniapp():
