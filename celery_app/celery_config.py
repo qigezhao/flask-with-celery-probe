@@ -30,7 +30,7 @@ CELERY_IMPORTS = (
 
 # scheduled celery tasks with params
 CELERYBEAT_SCHEDULE = {
-    'beat_id': {
+    'beat_sync_city_weather': {
         'task': 'celery_app.beat_weather.beat_fetch_weather',
         'schedule': crontab(hour='*/1'),
         # 'schedule': timedelta(seconds=5),
