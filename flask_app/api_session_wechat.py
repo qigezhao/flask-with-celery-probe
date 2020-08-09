@@ -7,7 +7,6 @@ from flask import request, abort
 
 from flask_app import app
 from flask_app.manager.session.wechat import WechatMiniAppManager
-# from flask_app.decorator.api_response.wechat_miniapp import WechatMiniAppReponse as Response
 from flask_app.decorator.api_response import GenericJsonResponse
 from flask_app.decorator.performance import PerformanceProbe as Probe
 

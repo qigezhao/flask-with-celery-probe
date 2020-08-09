@@ -12,14 +12,18 @@ CELERY_TASK_RESULT_EXPIRES = 60 * 15
 CELERY_EVENT_QUEUE_TTL = 5
 
 CELERYD_TASK_TIME_LIMIT = 60 * 15
-CELERYD_MAX_TASK_PER_CHILD = 20
+CELERYD_MAX_TASKS_PER_CHILD = 20
 CELERYD_FORCE_EVECV = True
 
 # payload pack/unpack between celery worker
 CELERY_ACCEPT_CONTENT = [
-    'msgpack'
+    'msgpack',
+    # 'pickle',
+    # 'json',
+    # 'yaml',
 ]
 CELERY_TASK_SERIALIZER = 'msgpack'
+CELERY_RESULT_SERIALIZER = 'msgpack'
 CELERY_MESSAGE_COMPRESSION = 'zlib'
 
 # celery components

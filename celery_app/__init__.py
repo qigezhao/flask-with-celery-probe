@@ -7,8 +7,7 @@ from celery import Celery
 from celery_app.config import Config
 
 cfg = Config.get_instance()
-app = Celery(
-    __name__,
-    broker=cfg.celery_broker,
-    backend=cfg.celery_backend,
-)
+app_config = dict(broker=cfg.celery_broker, backend=cfg.celery_backend)
+
+app = Celery(__name__, **app_config)
+app.config_from_object('celery_app.celery_config')

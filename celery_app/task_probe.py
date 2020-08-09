@@ -13,8 +13,9 @@ def task_performance_probe_save(self, payload, *args, **kwargs):
         result.update(dict(result='success', payload=payload, ))
 
     except Exception as e:
-        component = 'celery_app.task_probe.celery_task_performance_probe_save'
+        component = 'celery_app.task_probe.task_performance_probe_save'
         logging.error('{}(args={}, kwargs={})'.format(component, args, kwargs))
+        result.update(dict(result='failed', error=str(e), ))
 
     finally:
         return result
